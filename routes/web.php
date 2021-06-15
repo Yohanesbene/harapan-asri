@@ -36,6 +36,8 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('dataPegawai/update', [PegawaiController::class, 'update'])->name('admin.updatePegawai');
         Route::get('dataPegawai/delete/{id}', [PegawaiController::class, 'delete']);
         Route::get('dataUser', [UserController::class, 'index'])->name('admin.dataUser');
+        Route::get('dataUser/create', [UserController::class, 'create'])->name('admin.tambahUser');
+        Route::post('dataUser/store', [UserController::class, 'store'])->name('admin.storeUser');
         Route::get('dataUser/edit/{id}', [UserController::class, 'edit']);
         Route::post('dataUser/update', [UserController::class, 'update'])->name('admin.updateUser');
         Route::get('dataUser/delete/{id}', [UserController::class, 'delete']);

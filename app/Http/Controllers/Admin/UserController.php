@@ -18,6 +18,26 @@ class UserController extends Controller
     }
 
     public function create(){
-        return view('admin.tambahUser');
+        return view('auth.register');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'roleid' => 'required',
+            'pegawaiid' => 'required',
+            'username' => 'required|string|max:255|unique:users',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'roleid' => $request->roleid,
+            'pegawaiid' => $request->pegawaiid,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+        ]);
+
+        event(new Registered($user));
+
+        return redirect('/admin/dataUser');
     }
 }
