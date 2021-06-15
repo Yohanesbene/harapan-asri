@@ -4,7 +4,7 @@
     </div>
     <div class="max-w-full flex justify-between mx-auto px-4 py-12 sm:px-10 lg:px-40">
         <h2 class="text-2xl sm:text-4xl font-semibold leading-tight">Daftar User</h2>
-        <a class="text-sm bg-green-500 hover:bg-green-700 text-white py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('register') }}">{{ __('Tambah User') }}</a>
+        <a class="text-sm bg-green-500 hover:bg-green-700 text-white py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('admin.tambahUser') }}">{{ __('Tambah User') }}</a>
     </div>
     <div class="w-full px-4 sm:px-10 lg:px-40">
         <div class="shadow-lg overflow-x-auto rounded border-b border-gray-200 mb-10">
@@ -47,9 +47,8 @@
                         @endif
                         
                         <td class="p-3 px-4 flex">
-                            <a href="#" class="mr-3 text-sm bg-blue-100 hover:bg-blue-300 text-black py-2 px-4 rounded focus:outline-none transition duration-200">Edit</a>
-                            <a href="#" class="mr-3 text-sm bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded focus:outline-none transition duration-200">Delete</a>
-                            <a href="#" class="mr-3 text-sm md:text-base xl:py-1 text-indigo-500 hover:text-indigo-900">Reset Password</a>
+                            <a href="dataUser/edit/{{ $users->id }}" class="mr-3 text-sm bg-blue-100 hover:bg-blue-300 text-black py-2 px-4 rounded focus:outline-none transition duration-200">Edit</a>
+                            <a href="dataUser/forgot-password/{{ $users->id }}" class="mr-3 text-sm md:text-base xl:py-1 text-indigo-500 hover:text-indigo-900">Reset Password</a>
                         </td>
                     </tr>
                     @endforeach

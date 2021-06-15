@@ -2,23 +2,37 @@
     <x-auth-card>
         <!-- Card Title -->
         <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800 mb-6">
-            Register
+            Register New User
         </h2>
 
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('admin.storeUser') }}">
             @csrf
 
             <!-- role Input -->
             <x-label for="roleid" :value="__('Role')"/>
-            <x-input id="roleid" type="text" name="roleid" :value="old('roleid')" placeholder="role user" autofocus autocomplete="off"/>
+            <x-option-select name="roleid" id="roleid">
+                <x-slot name="option">
+                    <option>---Pilih Role---</option>
+                    @foreach ($role as $role)
+                        <option value="{{ $role->id }}">{{ $role->description }}</option>
+                    @endforeach
+                </x-slot>
+            </x-option-select>
 
             <!-- Pegawai Input -->
             <x-label class="mt-4" for="pegawaiid" :value="__('Pegawai')"/>
-            <x-input id="pegawaiid" type="text" name="pegawaiid" :value="old('pegawaiid')" placeholder="pegawai" autofocus autocomplete="off"/>
+            <x-option-select name="pegawaiid" id="pegawaiid">
+                <x-slot name="option">
+                    <option>---Pilih Pegawai---</option>
+                    @foreach ($pegawai as $pegawai)
+                        <option value="{{ $pegawai->id }}">{{ $pegawai->nama }}</option>
+                    @endforeach
+                </x-slot>
+            </x-option-select>
 
             <!-- Username Input -->
             <x-label class="mt-4" for="username" :value="__('Username')"/>

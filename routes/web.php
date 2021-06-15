@@ -40,7 +40,8 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('dataUser/store', [UserController::class, 'store'])->name('admin.storeUser');
         Route::get('dataUser/edit/{id}', [UserController::class, 'edit']);
         Route::post('dataUser/update', [UserController::class, 'update'])->name('admin.updateUser');
-        Route::get('dataUser/delete/{id}', [UserController::class, 'delete']);
+        Route::get('dataUser/forgot-password/{id}', [UserController::class, 'resetpw']);
+        Route::post('dataUser/reset-password/{id}', [UserController::class, 'updatepw']);
     });
 
     // Route User
