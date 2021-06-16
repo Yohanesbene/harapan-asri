@@ -2,7 +2,7 @@
     <x-auth-card>
         <!-- Card Title -->
         <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800 mb-6">
-            Register New User
+            Edit User
         </h2>
 
 

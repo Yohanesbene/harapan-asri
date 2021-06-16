@@ -13,7 +13,7 @@
 
             <!-- Password Input -->
             <x-label for="password" class="mt-4" 
-                    :value="__('Password')"/>
+                    :value="__('New Password')"/>
             <x-input id="password" 
                     type="password" 
                     name="password"  

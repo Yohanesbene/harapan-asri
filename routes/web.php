@@ -47,6 +47,11 @@ Route::group(['middleware'=>'auth'], function(){
     // Route User
     Route::group(['prefix'=>'user', 'namespace'=>'User'], function(){
         Route::get('dashboard', [ClientController::class, 'index'])->name('user.dashboard');
+        Route::get('detailPenghuni/{id}', [ClientController::class, 'detail'])->name('user.detail');
+        Route::get('dataPenghuni/create', [ClientController::class, 'create'])->name('user.tambahPenghuni');
+        Route::post('dataPenghuni/store', [ClientController::class, 'store'])->name('user.storePenghuni');
+        Route::get('editPenghuni/{id}', [ClientController::class, 'edit']);
+        Route::post('updatePenghuni', [ClientController::class, 'update'])->name('user.updatePenghuni');
     });
 });
 
