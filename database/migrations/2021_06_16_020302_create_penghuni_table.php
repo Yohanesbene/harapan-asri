@@ -28,8 +28,8 @@ class CreatePenghuniTable extends Migration
             $table->string('ruang');
             $table->date('tglMasuk');
             $table->date('tglKeluar')->nullable();
-            $table->integer('meninggal');
-            $table->integer('keluar');
+            $table->integer('meninggal')->nullable();
+            $table->integer('keluar')->nullable();
         });
     }
 

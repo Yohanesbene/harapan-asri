@@ -126,6 +126,7 @@
                         <td class="p-3 px-4 flex">
                             <a href="editPenghuni/{{ $penghuni->id }}" class="mr-3 text-sm bg-indigo-100 hover:bg-indigo-300 text-black py-2 px-4 rounded focus:outline-none transition duration-200">Edit</a>
                             <a href="detailPenghuni/{{ $penghuni->id }}" class="mr-3 text-sm bg-blue-500 hover:bg-blue-800 text-white py-2 px-4 rounded focus:outline-none transition duration-200">Details</a>
+                            <a href="deletePenghuni/{{ $penghuni->id }}" class="mr-3 text-sm bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded focus:outline-none transition duration-200">Delete</a>
                         </td>
                     </tr>
                     @endforeach
