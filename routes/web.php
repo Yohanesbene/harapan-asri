@@ -54,7 +54,10 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('updatePenghuni/{id}', [ClientController::class, 'update']);
         Route::post('updatePenghuni', [ClientController::class, 'update'])->name('user.updatePenghuni');
         Route::get('deletePenghuni/{id}', [ClientController::class, 'delete'])->name('user.deletePenghuni');
+        Route::get('print', [ClientController::class, 'printClient'])->name('user.print');
     });
+
+    
 });
 
 require __DIR__.'/auth.php';
