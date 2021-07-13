@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PegawaiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\ClientController;
+use App\Http\Controllers\User\KeperawatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,8 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('updatePenghuni', [ClientController::class, 'update'])->name('user.updatePenghuni');
         Route::get('deletePenghuni/{id}', [ClientController::class, 'delete'])->name('user.deletePenghuni');
         Route::get('print', [ClientController::class, 'printClient'])->name('user.print');
+        Route::get('keperawatan', [KeperawatanController::class, 'index'])->name('user.keperawatan');
+        Route::get('menuKeperawatan/{id}', [KeperawatanController::class, 'menu'])->name('user.menuKeperawatan');
     });
 
     

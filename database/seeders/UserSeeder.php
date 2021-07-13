@@ -20,15 +20,15 @@ class UserSeeder extends Seeder
             'roleid' => 1,
             'pegawaiid' => 1,
             'username' => 'admin',
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('admin123'),
         ]);
 
         //User
         DB::table('users')->insert([
             'roleid' => 4,
-            'pegawaiid' => 1,
+            'pegawaiid' => 2,
             'username' => 'perawat',
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('perawat1'),
         ]);
     }
 }

@@ -89,4 +89,12 @@ class ClientController extends Controller
     	return $pdf->download('daftar_penghuni.pdf');
     }
 
+    public function detail($id){
+        $penghuni = DB::table('penghuni')
+            ->where('penghuni.id', $id)
+            ->leftJoin('pj', 'pj.id', 'penghuni.pjid')
+            ->get();
+        return view('user.detailClient', compact('penghuni'));
+    }
+
 }

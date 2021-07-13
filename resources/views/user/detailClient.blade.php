@@ -95,53 +95,100 @@
     </nav>
 
     <!-- Content -->
-    <div class="max-w-full flex justify-between mx-auto px-4 py-12 sm:px-10 lg:px-40">
-        <h2 class="text-2xl sm:text-4xl font-semibold leading-tight">Daftar Penghuni</h2>
-        <a class="text-sm bg-green-500 hover:bg-green-700 text-white py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('user.tambahPenghuni') }}">{{ __('Tambah Penghuni Baru') }}</a>
-    </div>
-    <div class="w-full px-4 sm:px-10 lg:px-40">
-        <div class="shadow-lg overflow-x-auto rounded border-b border-gray-200 mb-10">
-            <table class="min-w-full bg-white">
-                <thead class="bg-gray-800 text-white">
-                    <tr class="text-white uppercase text-base leading-normal">
-                        <th class="text-left py-3 px-6 font-semibold">Nama Penghuni</th>
-                        <th class="text-left py-3 px-6 font-semibold">Nama Penanggung Jawab</th>
-                        <th class="text-left py-3 px-6 font-semibold">ruang</th>
-                        <th class="text-left py-3 px-6 font-semibold">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-700 text-base font-light">
-                    @foreach ($penghuni as $pghn)
-                    <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap">
-                            <div class="flex items-center">
-                                <span class="font-medium">{{ $pghn->namaLengkap }}</span>
-                            </div>
-                        </td>
-                        <td class="py-3 px-6 text-left whitespace-nowrap">
-                            <div class="flex items-center">
-                                <span>{{ $pghn->nama }}</span>
-                            </div>
-                        </td>
-                        <td class="py-3 px-6 text-center whitespace-nowrap">
-                            <div class="flex items-center">
-                                <span>{{ $pghn->ruang }}</span>
-                            </div>
-                        </td>
-                        
-                        <td class="p-3 px-4 flex">
-                            <a href="editPenghuni/{{ $pghn->id }}" class="mr-3 text-sm bg-indigo-100 hover:bg-indigo-300 text-black py-2 px-4 rounded focus:outline-none transition duration-200">Edit</a>
-                            <a href="detailPenghuni/{{ $pghn->id }}" class="mr-3 text-sm bg-blue-500 hover:bg-blue-800 text-white py-2 px-4 rounded focus:outline-none transition duration-200">Details</a>
-                            <a href="deletePenghuni/{{ $pghn->id }}" class="mr-3 text-sm bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded focus:outline-none transition duration-200">Delete</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <div class="w-full px-4 py-12 mx-2 h-64 sm:px-10 lg:px-40">
+        <div class="mx-auto py-6">
+            <a class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('user.dashboard') }}">{{ __('Back') }}</a>
         </div>
-        {{ $penghuni->links() }}
+        <!-- Profile tab -->
+        <!-- About Section -->
+        <div class="bg-white p-3 shadow-sm rounded-sm">
+            <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                <span class="text-green-500">
+                    <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </span>
+                <span class="tracking-wide text-green-500">Detail Penghuni</span>
+            </div>
+            <div class="text-gray-700 py-4">
+                <div class="grid md:grid-cols-1 text-base">
+                    @foreach ($penghuni as $pghn)
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Nama Lengkap</div>
+                        <div class="px-4 py-2">{{ $pghn->namaLengkap }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Nama Panggilan</div>
+                        <div class="px-4 py-2">{{ $pghn->namaPanggilan }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Penanggung Jawab</div>
+                        <div class="px-4 py-2">{{ $pghn->nama }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Tanggal Lahir</div>
+                        <div class="px-4 py-2">{{ $pghn->tgllahir }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Gender</div>
+                        <div class="px-4 py-2">{{ $pghn->gender }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Agama</div>
+                        <div class="px-4 py-2">{{ $pghn->agama }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Alamat</div>
+                        <div class="px-4 py-2">{{ $pghn->alamat }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Nomor Telepon</div>
+                        <div class="px-4 py-2">{{ $pghn->notelp }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Asal Daerah</div>
+                        <div class="px-4 py-2">{{ $pghn->asalDaerah }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Ruang</div>
+                        <div class="px-4 py-2">{{ $pghn->ruang }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Tanggal Masuk</div>
+                        <div class="px-4 py-2">{{ $pghn->tglMasuk }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Tanggal Keluar</div>
+                        <div class="px-4 py-2">{{ $pghn->tglKeluar }}</div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Meninggal</div>
+                        @if ($pghn->meninggal == 1)
+                            <div class="px-4 py-2">Sudah</div>
+                        @else
+                            <div class="px-4 py-2">Belum</div>
+                        @endif
+                        
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="px-4 py-2 font-bold">Keluar</div>
+                        @if ($pghn->keluar == 1)
+                            <div class="px-4 py-2">Sudah</div>
+                        @else
+                            <div class="px-4 py-2">Belum</div>
+                        @endif
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="max-w-full flex justify-end mx-auto px-4 py-6 sm:px-10 lg:px-40">
+    
+    {{-- {{ $penghuni->links() }} --}}
+    {{-- <div class="max-w-full flex justify-end mx-auto px-4 py-6 sm:px-10 lg:px-40">
         <a class="text-sm font-extrabold border-2 border-blue-500 hover:border-blue-700 text-blue-500 hover:text-blue-700 py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('user.print') }}" target="_blank">{{ __('Print Data') }}</a>
-    </div>
+    </div> --}}
 </x-app-layout>

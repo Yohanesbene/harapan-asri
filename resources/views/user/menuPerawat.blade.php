@@ -95,53 +95,20 @@
     </nav>
 
     <!-- Content -->
-    <div class="max-w-full flex justify-between mx-auto px-4 py-12 sm:px-10 lg:px-40">
-        <h2 class="text-2xl sm:text-4xl font-semibold leading-tight">Daftar Penghuni</h2>
-        <a class="text-sm bg-green-500 hover:bg-green-700 text-white py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('user.tambahPenghuni') }}">{{ __('Tambah Penghuni Baru') }}</a>
-    </div>
-    <div class="w-full px-4 sm:px-10 lg:px-40">
-        <div class="shadow-lg overflow-x-auto rounded border-b border-gray-200 mb-10">
-            <table class="min-w-full bg-white">
-                <thead class="bg-gray-800 text-white">
-                    <tr class="text-white uppercase text-base leading-normal">
-                        <th class="text-left py-3 px-6 font-semibold">Nama Penghuni</th>
-                        <th class="text-left py-3 px-6 font-semibold">Nama Penanggung Jawab</th>
-                        <th class="text-left py-3 px-6 font-semibold">ruang</th>
-                        <th class="text-left py-3 px-6 font-semibold">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-700 text-base font-light">
-                    @foreach ($penghuni as $pghn)
-                    <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6 text-left whitespace-nowrap">
-                            <div class="flex items-center">
-                                <span class="font-medium">{{ $pghn->namaLengkap }}</span>
-                            </div>
-                        </td>
-                        <td class="py-3 px-6 text-left whitespace-nowrap">
-                            <div class="flex items-center">
-                                <span>{{ $pghn->nama }}</span>
-                            </div>
-                        </td>
-                        <td class="py-3 px-6 text-center whitespace-nowrap">
-                            <div class="flex items-center">
-                                <span>{{ $pghn->ruang }}</span>
-                            </div>
-                        </td>
-                        
-                        <td class="p-3 px-4 flex">
-                            <a href="editPenghuni/{{ $pghn->id }}" class="mr-3 text-sm bg-indigo-100 hover:bg-indigo-300 text-black py-2 px-4 rounded focus:outline-none transition duration-200">Edit</a>
-                            <a href="detailPenghuni/{{ $pghn->id }}" class="mr-3 text-sm bg-blue-500 hover:bg-blue-800 text-white py-2 px-4 rounded focus:outline-none transition duration-200">Details</a>
-                            <a href="deletePenghuni/{{ $pghn->id }}" class="mr-3 text-sm bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded focus:outline-none transition duration-200">Delete</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <div class="flex bg-gray-100 py-12 px-4">
+        <div class="container mx-auto">
+            <div class="grid grid-rows-3 grid-cols-5 gap-5">
+                <!-- START: Pilih Penghuni -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Berat Badan</h5>
+                    </div>
+                    <a href="#" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Pilih Penghuni -->
+            </div>
         </div>
-        {{ $penghuni->links() }}
-    </div>
-    <div class="max-w-full flex justify-end mx-auto px-4 py-6 sm:px-10 lg:px-40">
-        <a class="text-sm font-extrabold border-2 border-blue-500 hover:border-blue-700 text-blue-500 hover:text-blue-700 py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('user.print') }}" target="_blank">{{ __('Print Data') }}</a>
     </div>
 </x-app-layout>
