@@ -97,6 +97,12 @@
     <!-- Content -->
     <div class="flex bg-gray-100 py-12 px-4">
         <div class="container mx-auto">
+             <!-- Session Status -->
+            @if ( session('success'))
+                <div class="py-3 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200" role="alert">
+                        {{ session('success') }}
+                </div>
+            @endif
             <div class="grid grid-rows-3 grid-cols-5 gap-5">
                 <!-- START: Pilih Penghuni -->
                 <div 
@@ -105,7 +111,7 @@
                     <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
                         <h5 class="text-2xl font-semibold text-white">Berat Badan</h5>
                     </div>
-                    <a href="#" class="absolute inset-0 z-10 cursor-pointer"></a>
+                    <a href="{{ route('user.berat') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
                 </div>
                 <!-- END: Pilih Penghuni -->
             </div>

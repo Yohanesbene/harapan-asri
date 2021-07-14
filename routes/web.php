@@ -57,7 +57,13 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('deletePenghuni/{id}', [ClientController::class, 'delete'])->name('user.deletePenghuni');
         Route::get('print', [ClientController::class, 'printClient'])->name('user.print');
         Route::get('keperawatan', [KeperawatanController::class, 'index'])->name('user.keperawatan');
-        Route::get('menuKeperawatan/{id}', [KeperawatanController::class, 'menu'])->name('user.menuKeperawatan');
+        Route::get('keperawatan/createBerat', [KeperawatanController::class, 'createBerat'])->name('user.berat');
+        Route::post('keperawatan/storeBerat', [KeperawatanController::class, 'storeBerat'])->name('user.storeBerat');
+        // Route::get('keperawatan/cariPenghuni', [KeperawatanController::class, 'loadPenghuni']);
+        // Route::get('menuKeperawatan/{id}', [KeperawatanController::class, 'menu'])->name('user.menuKeperawatan');
+        
+        // Route::get('menuKeperawatan/{id}/berat/create', [KeperawatanController::class, 'create'])->name('user.inputBerat');
+        // Route::post('berat/store', [KeperawatanController::class, 'store'])->name('user.storeBerat');
     });
 
     

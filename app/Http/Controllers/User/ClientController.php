@@ -94,6 +94,12 @@ class ClientController extends Controller
             ->where('penghuni.id', $id)
             ->leftJoin('pj', 'pj.id', 'penghuni.pjid')
             ->get();
+        $beratbadan = DB::table('beratbadan')
+            ->select('beratbadan.id', 'penghuni.namaLengkap', 'beratbadan.hasil', 'beratbadan.waktu')
+            ->where('beratbadan.penghuniid', $id)
+            ->leftJoin('penghuni', 'penghuni.id', 'beratbadan.penghuniid')
+            ->get();
+        DD($beratbadan);
         return view('user.detailClient', compact('penghuni'));
     }
 
