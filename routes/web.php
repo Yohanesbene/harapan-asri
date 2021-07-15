@@ -31,7 +31,6 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('redirects', [HomeController::class, 'index']);
     // Route Admin
     Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function(){
-        Route::get('redirects', [HomeController::class, 'index']);
         Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
         Route::get('dataPegawai', [PegawaiController::class, 'index'])->name('admin.dataPegawai');
         Route::get('dataPegawai/create', [PegawaiController::class, 'create'])->name('admin.tambahPegawai');
