@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const HOME = 'redirects';
 
     protected function redirectTo(){
         if(Auth()->user()->roleid == 1){
