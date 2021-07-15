@@ -59,18 +59,11 @@
             </div>
 
             <!-- Gender -->
-            <div class="mb-6">
-                <x-label for="gender" :value="__('Gender')" />
-                <x-option-select name="gender" id="gender">
-                    <x-slot name="option">
-                        <option value="0">
-                            <--Pilih-->
-                        </option>
-                        <option value="l">Laki-laki</option>
-                        <option value="p">Perempuan</option>
-                    </x-slot>
-                </x-option-select>
-            </div>
+            <x-label class="mt-4" for="gender" :value="__('Gender')"/>
+            <x-label for="gender" class="py-4">
+                    <input type="radio" name="gender" id="gender" class="form-radio h-5 w-5 text-gray-600" value="L"><span class="ml-2 text-gray-700">L</span>
+                    <input type="radio" name="gender" id="gender" class="form-radio h-5 w-5 text-gray-600" value="P"><span class="ml-2 text-gray-700">P</span>
+            </x-label>
 
             <!-- Agama -->
             <div class="mb-6">

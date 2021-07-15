@@ -97,12 +97,20 @@
     <!-- Content -->
     <div class="flex bg-gray-100 py-12 px-4">
         <div class="container mx-auto">
-             <!-- Session Status -->
+             <!-- Session Status Success -->
             @if ( session('success'))
                 <div class="py-3 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200" role="alert">
                         {{ session('success') }}
                 </div>
             @endif
+
+            <!-- Session Status Failed -->
+            @if ( session('error'))
+                <div class="py-3 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200" role="alert">
+                        {{ session('error') }}
+                </div>
+            @endif
+
             <div class="grid grid-rows-3 grid-cols-5 gap-5">
                 <!-- START: Pilih Penghuni -->
                 <div 

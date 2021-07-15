@@ -48,7 +48,7 @@
                         
                         <td class="p-3 px-4 flex">
                             <a href="dataUser/edit/{{ $users->id }}" class="mr-3 text-sm bg-blue-100 hover:bg-blue-300 text-black py-2 px-4 rounded focus:outline-none transition duration-200">Edit</a>
-                            <a href="dataUser/forgot-password/{{ $users->id }}" class="mr-3 text-sm md:text-base xl:py-1 text-indigo-500 hover:text-indigo-900">Reset Password</a>
+                            <a href="lupaPassword/{{ $users->id }}" class="mr-3 text-sm md:text-base xl:py-1 text-indigo-500 hover:text-indigo-900">Reset Password</a>
                         </td>
                     </tr>
                     @endforeach

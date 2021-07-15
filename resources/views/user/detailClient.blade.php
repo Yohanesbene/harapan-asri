@@ -1,3 +1,6 @@
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
 <x-app-layout>
 
     <!-- Navbar -->
@@ -95,7 +98,7 @@
     </nav>
 
     <!-- Content -->
-    <div class="w-full px-4 py-12 mx-2 h-64 sm:px-10 lg:px-40">
+    <div class="w-full px-4 py-12 mx-2 min-h-screen sm:px-10 lg:px-40">
         <div class="mx-auto py-6">
             <a class="text-sm bg-gray-500 hover:bg-gray-700 text-white py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('user.dashboard') }}">{{ __('Back') }}</a>
         </div>
@@ -185,6 +188,38 @@
             </div>
         </div>
 
+        <!-- Data Berat Badan -->
+        <div class="w-full container">
+            <div class="mt-6 md:flex">
+                <div class="w-full md:w-1/2">
+                    <div class="rounded-lg shadow-sm mb-4">
+                        <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                            <div class="px-5 pt-8 pb-10 relative">
+                                <div class="mb-2 pb-2">
+                                    <h3 class="text-lg text-gray-600 font-semibold leading-tight pb-2">Berat Badan</h3>
+                                    <p class="text-sm text-gray-500">Data Berat Badan Penghuni Per Hari</p>
+                                </div>
+                                <canvas id="chartBerat" class="w-full" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 md:ml-4">
+                    <div class="rounded-lg shadow-sm mb-4">
+                        <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
+                            <div class="px-5 pt-8 pb-10 relative">
+                                <div class="mb-2 pb-2">
+                                    <h3 class="text-lg text-gray-600 font-semibold leading-tight pb-2">Berat Badan</h3>
+                                    <p class="text-sm text-gray-500">Data Berat Badan Penghuni Per Hari</p>
+                                </div>
+                                <canvas id="chartBerat" class="w-full" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     
     {{-- {{ $penghuni->links() }} --}}
@@ -192,3 +227,69 @@
         <a class="text-sm font-extrabold border-2 border-blue-500 hover:border-blue-700 text-blue-500 hover:text-blue-700 py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('user.print') }}" target="_blank">{{ __('Print Data') }}</a>
     </div> --}}
 </x-app-layout>
+
+<script>
+    var areaChartCanvas = $('#chartBerat').get(0).getContext('2d')
+
+    var areaChartData = {
+      labels  : [
+          @foreach ( $beratbadan as $databerat)
+            '{{ $databerat->waktu }}',
+          @endforeach
+      ],
+      datasets: [
+        {
+          label               : '',
+          backgroundColor     : "rgba(60,141,181, 0.1)",
+          borderColor         : "rgba(60,141,181, 1)",
+          pointBackgroundColor: "rgba(60,141,181, 1)",
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [
+              @foreach ( $beratbadan as $databerat)
+                '{{ $databerat->hasil }}',
+              @endforeach
+          ]
+        },
+      ]
+    }
+
+    var areaChartOptions = {
+      maintainAspectRatio : false,
+      responsive : true,
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+        //   ticks: {
+        //     fontColor: "rgba(60,141,181, 1)",
+        //   },
+          gridLines : {
+            display : false,
+          }
+        }],
+        xAxes: [{
+        //   ticks: {
+        //     fontColor: "rgba(60,141,181, 1)",
+        //   },
+          gridLines : {
+            color: "rgba(60,141,181, .2)",
+            borderDash: [5, 5],
+            zeroLineColor: "rgba(60,141,181, .2)",
+            zeroLineBorderDash: [5, 5]
+          }
+        }]
+      }
+    }
+
+    // This will get the first returned node in the jQuery collection.
+    new Chart(areaChartCanvas, {
+      type: 'line',
+      data: areaChartData,
+      options: areaChartOptions
+    })
+
+</script>

@@ -8,9 +8,10 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="dataUser/reset-password/{{ $users->id }}">
+        <form method="POST" action="{{ route('admin.updatepw') }}">
             @csrf
 
+            <x-input type="hidden" name="id" value="{{ $users->id }}"></x-input>
             <!-- Password Input -->
             <x-label for="password" class="mt-4" 
                     :value="__('New Password')"/>

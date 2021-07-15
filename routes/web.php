@@ -41,8 +41,8 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('dataUser/store', [UserController::class, 'store'])->name('admin.storeUser');
         Route::get('dataUser/edit/{id}', [UserController::class, 'edit']);
         Route::post('dataUser/update', [UserController::class, 'update'])->name('admin.updateUser');
-        Route::get('dataUser/forgot-password/{id}', [UserController::class, 'resetpw']);
-        Route::post('dataUser/reset-password/{id}', [UserController::class, 'updatepw']);
+        Route::get('lupaPassword/{id}', [UserController::class, 'resetpw']);
+        Route::post('updatePassword', [UserController::class, 'updatepw'])->name('admin.updatepw');
     });
 
     // Route User

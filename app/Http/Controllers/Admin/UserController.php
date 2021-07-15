@@ -73,12 +73,14 @@ class UserController extends Controller
 
     public function resetpw($id){
         $users = User::find($id);
+        // dd($users);
         return view('auth.reset-password', ['users' => $users]);
     }
 
-    public function updatepw(Request $request, $id){
-        $users = User::find($id);
+    public function updatepw(Request $request){
+        $users = User::find($request->id);
         $users->update(['password' => Hash::make($request->password)]);
+        // DD($request);
         return redirect('/admin/dataUser');
     }
 }

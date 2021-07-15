@@ -59,25 +59,54 @@ class ClientController extends Controller
     }
 
     public function edit($id){
+        $penghuni = DB::table('penghuni')
+            ->select('penghuni.id', 'penghuni.pjid', 'pj.nama', 'penghuni.namaLengkap', 'penghuni.namaPanggilan', 'penghuni.tgllahir', 'penghuni.gender', 'penghuni.agama',
+                    'penghuni.alamat', 'penghuni.notelp', 'penghuni.asalDaerah', 'penghuni.ruang', 'penghuni.tglMasuk', 'penghuni.tglKeluar', 'penghuni.meninggal',
+                    'penghuni.keluar')
+            ->where('penghuni.id', $id)
+            ->leftJoin('pj', 'pj.id', 'penghuni.pjid')
+            ->first();
         $pj = DB::table('pj')->get();
-        return view('user.editClient', compact('pj'));
+        return view('user.editClient', compact('pj', 'penghuni'));
     }
 
-    public function update(Request $request, $id){
-        DB::table('penghuni')->where('id', '=',$id)
-        ->update(['pjid' => $request->pj],
-        ['namaLengkap' => $request->namalengkap],
-        ['namaPanggilan' => $request->namepgl],
-        ['tgllahir' => $request->tgllahir],
-        ['gender' => $request->gender],
-        ['agama' => $request->agama],
-        ['alamat' => $request->alamat],
-        ['notelp' => $request->notelp],
-        ['asalDaerah' => $request->asal],
-        ['ruang' => $request->ruang],
-        ['tglMasuk' => $request->tglmasuk]);
+    public function update(Request $request){
+        DB::table('penghuni')
+            ->where('id', $request->id)
+            ->update([
+                'pjid' => $request->pjid,
+                'namaLengkap' => $request->namalengkap,
+                'namaPanggilan' => $request->namepgl,
+                'tgllahir' => $request->tgllahir,
+                'gender' => $request->gender,
+                'agama' => $request->agama,
+                'alamat' => $request->alamat,
+                'notelp' => $request->notelp,
+                'asalDaerah' => $request->asal,
+                'ruang' => $request->ruang,
+                'tglMasuk' => $request->tglmasuk,
+                'tglKeluar' => $request->tglkeluar,
+                'meninggal' => $request->meninggal,
+                'keluar' => $request->keluar,
+            ]);
         return redirect('user/dashboard');
     }
+
+    // public function update(Request $request, $id){
+    //     DB::table('penghuni')->where('id', '=',$id)
+    //     ->update(['pjid' => $request->pj],
+    //     ['namaLengkap' => $request->namalengkap],
+    //     ['namaPanggilan' => $request->namepgl],
+    //     ['tgllahir' => $request->tgllahir],
+    //     ['gender' => $request->gender],
+    //     ['agama' => $request->agama],
+    //     ['alamat' => $request->alamat],
+    //     ['notelp' => $request->notelp],
+    //     ['asalDaerah' => $request->asal],
+    //     ['ruang' => $request->ruang],
+    //     ['tglMasuk' => $request->tglmasuk]);
+    //     return redirect('user/dashboard');
+    // }
 
     public function printClient(){
         $penghuni = DB::table('penghuni')
@@ -99,8 +128,8 @@ class ClientController extends Controller
             ->where('beratbadan.penghuniid', $id)
             ->leftJoin('penghuni', 'penghuni.id', 'beratbadan.penghuniid')
             ->get();
-        DD($beratbadan);
-        return view('user.detailClient', compact('penghuni'));
+        // DD($beratbadan);
+        return view('user.detailClient', compact('penghuni', 'beratbadan'));
     }
 
 }
