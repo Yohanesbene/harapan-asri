@@ -20,6 +20,20 @@ class ClientController extends Controller
         return view('user.index', compact('penghuni'));
     }
 
+    public function createPJ(){
+        return view('user.tambahPJ');
+    }
+
+    public function storePJ(Request $request){
+        DB::table('pj')->insert([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'telpon' => $request->telpon,
+        ]);
+
+        return redirect('user/dataPenghuni/create');
+    }
+
     public function create(){
         $pj = DB::table('pj')->get();
         return view('user.tambahClient', compact('pj'));

@@ -1,3 +1,25 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#pj').select2({
+            placeholder: '---Pilih Penanggung Jawab---',
+            width: '100%',
+
+            minimumInputLength: 3,
+            "language": {
+                searching: function() {
+                    return "Sedang Mencari...";
+                },
+            }
+        });
+    });
+
+</script>
+
 <x-guest-layout>
     <x-auth-card>
         <!-- Card Title -->
@@ -14,9 +36,9 @@
 
             <!-- pj Input -->
             <x-label for="pj" :value="__('Penanggung Jawab')"/>
-            <x-option-select name="pj" id="roleid">
+            <x-option-select name="pj" id="pj">
                 <x-slot name="option">
-                    <option>---Pilih Penanggung Jawab---</option>
+                    {{-- <option>---Pilih Penanggung Jawab---</option> --}}
                     @foreach ($pj as $pj)
                         <option value="{{ $pj->id }}">{{ $pj->nama }}</option>
                     @endforeach
