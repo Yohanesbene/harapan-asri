@@ -31,7 +31,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('user.storePenghuni') }}">
+        <form method="POST" action="{{ route('user.storePenghuni') }}" enctype="multipart/form-data">
             @csrf
 
             <!-- pj Input -->
@@ -45,9 +45,13 @@
                 </x-slot>
             </x-option-select>
 
+            <!-- Foto Penghuni -->
+            <x-label class="mt-4" for="image" :value="__('Foto Penghuni')" />
+            <x-input id="image" type="file" name="image" :value="old('image')" placeholder="Nama Lengkap" autofocus />
+
             <!-- Nama Lengkap Input -->
             <x-label class="mt-4" for="namalengkap" :value="__('nama Lengkap')" />
-            <x-input id="namalengkap" type="text" name="namalengkap" :value="old('namalengkap')" placeholder="Nama Lengkap" autofocus autocomplete="off" />
+            <x-input id="namalengkap" type="text" name="namalengkap" :value="old('namalengkap')" placeholder="Nama Lengkap" autocomplete="off" />
 
             <!-- Name Panggilan-->
             <div class="mb-6">
@@ -55,23 +59,6 @@
 
                 <x-input id="namepgl" type="text" name="namepgl" :value="old('namepgl')" placeholder="Nama Panggilan" required autofocus />
             </div>
-
-            <!-- Foto -->
-            <!-- <div class="mb-6">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <input type="file" name="image" placeholder="Choose image" id="image">
-                            @error('image')
-                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div> -->
 
             <!-- Tanggal Lahir -->
             <div class="mb-6">

@@ -40,17 +40,31 @@ class ClientController extends Controller
     }
 
     public function store(Request $request){
-        // $request->validate([
-        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-        // ]);
-  
-        // $imageName = time().'.'.$request->image->extension();  
-   
-        // $request->image->move(public_path('images'), $imageName);
+        // DD($request->all());
 
-        // $path = $request->image->move(public_path('images'), $imageName);
+        $request->validate([
+            'pj' => 'required',
+            'namalengkap' => 'required|string',
+            'namepgl' => 'required|string|max:255',
+            'tgllahir' => 'required',
+            'gender' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+            'notelp' => 'required',
+            'asal' => 'required',
+            'ruang' => 'required',
+            'tglmasuk' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048',
 
-        DB::table('penghuni')->insert([
+        ]);
+
+        $newImageName = time() . '-' . $request->namalengkap . '-' . $request->image->extension();
+
+        $test = $request->image->move(public_path('images'), $newImageName);
+
+        // dd($test);
+
+        $penghuni = DB::table('penghuni')->insert([
             'pjid' => $request->pj,
             'namaLengkap' => $request->namalengkap,
             'namaPanggilan' => $request->namepgl,
@@ -62,9 +76,16 @@ class ClientController extends Controller
             'asalDaerah' => $request->asal,
             'ruang' => $request->ruang,
             'tglMasuk' => $request->tglmasuk,
+            'foto' => $newImageName,
         ]);
 
-        return redirect('user/dashboard');
+        if ($penghuni) {
+            return redirect()->route('user.dashboard')->with('success', 'Data Berhasil Disimpan!');
+        } else {
+            return redirect()->route('user.dashboard')->with('error', 'Data Gagal Disimpan!');
+        }
+
+        // return redirect('user/dashboard');
     }
 
     public function delete($id){

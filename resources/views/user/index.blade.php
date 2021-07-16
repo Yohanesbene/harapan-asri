@@ -97,10 +97,24 @@
     <!-- Content -->
     <div class="max-w-full flex justify-between mx-auto px-4 py-12 sm:px-10 lg:px-40">
         <h2 class="text-2xl sm:text-4xl font-semibold leading-tight">Daftar Penghuni</h2>
-        <a class="text-sm bg-green-500 hover:bg-green-700 text-white py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('user.tambahPJ') }}">{{ __('Tambah Penghuni Baru') }}</a>
+        <a class="text-sm bg-green-500 hover:bg-green-700 text-white py-3 px-4 rounded focus:outline-none transition duration-200" href="{{ route('user.tambahPenghuni') }}">{{ __('Tambah Penghuni Baru') }}</a>
     </div>
+
     <div class="w-full px-4 sm:px-10 lg:px-40">
         <div class="shadow-lg overflow-x-auto rounded border-b border-gray-200 mb-10">
+            <!-- Session Status Success -->
+                @if ( session('success'))
+                <div class="min-w-full px-5 py-4 mb-6 bg-green-100 text-green-800 text-sm rounded-md border border-green-200" role="alert">
+                    {{ session('success') }}
+                </div>
+                @endif
+
+            <!-- Session Status Failed -->
+                @if ( session('error'))
+                <div class="min-w-full px-5 py-4 mb-6 bg-red-100 text-red-800 text-sm rounded-md border border-red-200" role="alert">
+                    {{ session('error') }}
+                </div>
+                @endif
             <table class="min-w-full bg-white">
                 <thead class="bg-gray-800 text-white">
                     <tr class="text-white uppercase text-base leading-normal">
