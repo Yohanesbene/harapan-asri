@@ -25,14 +25,14 @@
     <x-auth-card>
         <!-- Card Title -->
         <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800 mb-6">
-            Input Berat Badan
+            Input Cek Obat
         </h2>
 
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('user.storeBerat') }}">
+        <form method="POST" action="{{ route('user.storeCekObat') }}">
             @csrf
 
             <!-- Penghuni Input -->
@@ -46,9 +46,22 @@
                 </x-slot>
             </x-option-select>
 
-            <!-- Hasil Input -->
-            <x-label class="mt-4" for="hasil" :value="__('Hasil (dalam Kilogram)')" />
-            <x-input id="hasil" type="number" name="hasil" :value="old('hasil')" placeholder="Hasil" autocomplete="off" step="0.01"/>
+            <!-- Obat Input -->
+            <x-label class="mt-4" for="obat" :value="__('Nama Obat')" />
+            <x-input id="obat" type="text" name="obat" :value="old('obat')" placeholder="obat" autocomplete="off" />
+
+
+            <!-- Dosis Input -->
+            <x-label class="mt-4" for="dosis" :value="__('Dosis (dalam mg)')" />
+            <x-input id="dosis" type="number" name="dosis" :value="old('dosis')" placeholder="dosis" autocomplete="off" step="0.01"/>
+
+            <!-- Dikonsumsi Input -->
+            <x-label class="mt-4" for="dikonsumsi" :value="__('Dikonsumsi')"/>
+            <x-label for="dikonsumsi" class="py-4">
+                    <input type="radio" name="dikonsumsi" id="dikonsumsi" class="form-radio h-5 w-5 text-gray-600" value="1"><span class="ml-2 text-gray-700">Diminum</span>
+                    <input type="radio" name="dikonsumsi" id="dikonsumsi" class="form-radio h-5 w-5 text-gray-600" value="2"><span class="ml-2 text-gray-700">Tidak Diminum</span>
+                    <input type="radio" name="dikonsumsi" id="dikonsumsi" class="form-radio h-5 w-5 text-gray-600" value="3"><span class="ml-2 text-gray-700">Jatuh</span>
+            </x-label>
 
             <!-- Button Input -->
             <x-button class="mb-6">

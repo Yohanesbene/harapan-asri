@@ -24,6 +24,11 @@
             <x-button class="mb-6">
                 {{ __('Tambah') }}
             </x-button>
+
+            <p class="flex flex-col items-center justify-center mt-4 text-center text-lg text-gray-500">
+                <a href="{{ route('admin.dataPegawai') }}" class="font-semibold text-indigo-500 hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300">Cancel</a>
+            </p>
+
         </form>
     </x-auth-card>
 </x-guest-layout>

@@ -46,15 +46,19 @@
             </x-option-select>
 
             <!-- Foto Penghuni -->
-            <x-label class="mt-4" for="image" :value="__('Foto Penghuni')" />
-            <x-input id="image" type="file" name="image" :value="old('image')" placeholder="Nama Lengkap" autofocus />
+            <div class="form-group">
+                <x-label class="mt-4" for="image" :value="__('Foto Penghuni')" />
+                <x-input id="image" type="file" name="image" :value="old('image')" onchange="previewFile(this)" />
+                <img id="previewImg" alt="profile image" style="max-width: 130px; margin-top: 20px;">
+            </div>
+            {{-- <x-input id="image" type="file" name="image" :value="old('image')" autofocus /> --}}
 
             <!-- Nama Lengkap Input -->
             <x-label class="mt-4" for="namalengkap" :value="__('nama Lengkap')" />
             <x-input id="namalengkap" type="text" name="namalengkap" :value="old('namalengkap')" placeholder="Nama Lengkap" autocomplete="off" />
 
             <!-- Name Panggilan-->
-            <div class="mb-6">
+            <div class="my-6">
                 <x-label for="namepgl" :value="__('Nama Panggilan')" />
 
                 <x-input id="namepgl" type="text" name="namepgl" :value="old('namepgl')" placeholder="Nama Panggilan" required autofocus />
@@ -125,8 +129,24 @@
             <x-button class="mb-6">
                 {{ __('Input') }}
             </x-button>
-
+            <p class="flex flex-col items-center justify-center mt-4 text-center text-lg text-gray-500">
+                <a href="{{ route('user.dashboard') }}" class="font-semibold text-indigo-500 hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300">Cancel</a>
+            </p>
             </div>
         </form>
+        
     </x-auth-card>
 </x-guest-layout>
+
+<script type="text/javascript">
+    function previewFile(input){
+        var file = $("input[type=file]").get(0).files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                $('#previewImg').attr("src",reader.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>

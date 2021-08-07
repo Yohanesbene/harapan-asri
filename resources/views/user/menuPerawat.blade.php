@@ -112,7 +112,7 @@
             @endif
 
             <div class="grid grid-rows-3 grid-cols-5 gap-5">
-                <!-- START: Pilih Penghuni -->
+                <!-- START: Menu Berat Badan -->
                 <div 
                 class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
                 style="height: 180px">
@@ -121,7 +121,137 @@
                     </div>
                     <a href="{{ route('user.berat') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
                 </div>
-                <!-- END: Pilih Penghuni -->
+                <!-- END: Menu Berat Badan -->
+                <!-- START: Menu Nadi -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Nadi</h5>
+                    </div>
+                    <a href="{{ route('user.nadi') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Nadi -->
+                <!-- START: Menu Suhu Badan -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Suhu Badan</h5>
+                    </div>
+                    <a href="{{ route('user.suhu') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Suhu Badan -->
+                <!-- START: Menu SpO2 -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">SpO2</h5>
+                    </div>
+                    <a href="{{ route('user.spo2') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu SpO2 -->
+                <!-- START: Menu Tekanan Darah -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Tekanan Darah</h5>
+                    </div>
+                    <a href="{{ route('user.tekananDarah') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Tekanan Darah -->
+                <!-- START: Menu Cek Obat -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Cek Obat</h5>
+                    </div>
+                    <a href="{{ route('user.cekObat') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Cek Obat -->
+                <!-- START: Menu Pemberian Obat -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Pemberian Obat</h5>
+                    </div>
+                    <a href="{{ route('user.pemberianObat') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Pemberian Obat -->
+                <!-- START: Menu Nutrisi -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Nutrisi</h5>
+                    </div>
+                    <a href="{{ route('user.nutrisi') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Nutrisi -->
+                <!-- START: Menu Cairan -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Cairan</h5>
+                    </div>
+                    <a href="{{ route('user.cairan') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Cairan -->
+                <!-- START: Menu GDS -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">GDS</h5>
+                    </div>
+                    <a href="{{ route('user.gds') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu GDS -->
+                <!-- START: Menu Asam Urat -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Asam Urat</h5>
+                    </div>
+                    <a href="{{ route('user.asamUrat') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Asam Urat -->
+                <!-- START: Menu Kolesterol -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Kolesterol</h5>
+                    </div>
+                    <a href="{{ route('user.kolesterol') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Kolesterol -->
+                <!-- START: Menu Mobilisasi Dini -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Mobilisasi Dini</h5>
+                    </div>
+                    <a href="{{ route('user.mobilisasi') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Mobilisasi Dini -->
+                <!-- START: Menu Peminjaman Alat -->
+                <div 
+                class="relative col-span-5 row-span-1 md:col-span-1 bg-blue-400 hover:shadow-lg hover:bg-indigo-500 rounded-3xl transition duration-300 shadow-none h-full hover:shadow-lg"
+                style="height: 180px">
+                    <div class="overlay inset-0 md:bottom-auto flex justify-center md:items-center flex-col pl-24 md:pl-0 pt-16 md:pt-16">
+                        <h5 class="text-2xl font-semibold text-white">Peminjaman Alat</h5>
+                    </div>
+                    <a href="{{ route('user.peminjamanAlat') }}" class="absolute inset-0 z-10 cursor-pointer"></a>
+                </div>
+                <!-- END: Menu Peminjaman Alat -->
             </div>
         </div>
     </div>

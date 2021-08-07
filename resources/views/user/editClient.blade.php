@@ -1,3 +1,8 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+
 <x-guest-layout>
     <x-auth-card>
         <!-- Card Title -->
@@ -9,7 +14,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('user.updatePenghuni') }}">
+        <form method="POST" action="{{ route('user.updatePenghuni') }}" enctype="multipart/form-data">
             @csrf
 
             <x-input type="hidden" name="id" value="{{ $penghuni->id }}"></x-input>
@@ -24,6 +29,13 @@
                 </x-slot>
             </x-option-select>
 
+            <!-- Foto Penghuni -->
+            <div class="form-group">
+                <x-label class="mt-4" for="image" :value="__('Foto Penghuni')" />
+                <x-input id="image" type="file" name="image" :value="old('image')" onchange="previewFile(this)" />
+                <img id="previewImg" alt="profile image" src="{{ asset('images/' . $penghuni->foto) }}" style="max-width: 130px; margin-top: 20px;">
+            </div>
+
             <!-- Nama Lengkap Input -->
             <x-label class="mt-4" for="namalengkap" :value="__('nama Lengkap')" />
             <x-input id="namalengkap" type="text" name="namalengkap" value="{{ $penghuni->namaLengkap }}" placeholder="Nama Lengkap" autofocus autocomplete="off" />
@@ -34,23 +46,6 @@
 
                 <x-input id="namepgl" type="text" name="namepgl" value="{{ $penghuni->namaPanggilan }}" placeholder="Nama Panggilan" required autofocus />
             </div>
-
-            <!-- Foto -->
-            <!-- <div class="mb-6">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <input type="file" name="image" placeholder="Choose image" id="image">
-                            @error('image')
-                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </div> -->
 
             <!-- Tanggal Lahir -->
             <div class="mb-6">
@@ -139,7 +134,24 @@
                 {{ __('Update') }}
             </x-button>
 
+            <p class="flex flex-col items-center justify-center mt-4 text-center text-lg text-gray-500">
+                <a href="{{ route('user.dashboard') }}" class="font-semibold text-indigo-500 hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300">Cancel</a>
+            </p>
+
             </div>
         </form>
     </x-auth-card>
 </x-guest-layout>
+
+<script type="text/javascript">
+    function previewFile(input){
+        var file = $("input[type=file]").get(0).files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                $('#previewImg').attr("src",reader.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>

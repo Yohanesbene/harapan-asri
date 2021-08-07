@@ -25,14 +25,14 @@
     <x-auth-card>
         <!-- Card Title -->
         <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800 mb-6">
-            Input Berat Badan
+            Input Pemakaian Alat
         </h2>
 
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('user.storeBerat') }}">
+        <form method="POST" action="{{ route('user.storePeminjamanAlat') }}">
             @csrf
 
             <!-- Penghuni Input -->
@@ -46,9 +46,14 @@
                 </x-slot>
             </x-option-select>
 
-            <!-- Hasil Input -->
-            <x-label class="mt-4" for="hasil" :value="__('Hasil (dalam Kilogram)')" />
-            <x-input id="hasil" type="number" name="hasil" :value="old('hasil')" placeholder="Hasil" autocomplete="off" step="0.01"/>
+            <!-- Jenis Alat Input -->
+            <x-label class="mt-4" for="jenisalat" :value="__('Jenis Alat')" />
+            <x-input id="jenisalat" type="text" name="jenisalat" :value="old('jenisalat')" placeholder="jenisalat" autocomplete="off" />
+
+
+            <!-- Ukuran Input -->
+            <x-label class="mt-4" for="ukuran" :value="__('Ukuran')" />
+            <x-input id="ukuran" type="text" name="ukuran" :value="old('ukuran')" placeholder="ukuran" autocomplete="off" />
 
             <!-- Button Input -->
             <x-button class="mb-6">

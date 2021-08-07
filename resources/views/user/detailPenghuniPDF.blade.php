@@ -1,142 +1,31 @@
+<title>Print Detail Penghuni</title>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=huWtxcdm7VBnR_EqK6qoaDi1zFlSShkHS9MTmWEMJk37Ptue63NEYdnOoQZaNEUD7BqxoSg4sZGvvGCXK8gOZDc_T2gDXeY4t21qpHG1Jya46oQklxeb1z14HeygLRMl" charset="UTF-8"></script>
+<style>
+    .subpage {
+        page-break-before: avoid;
+        page-break-after: always;
+    }
+    @page {
+        size: A4;
+    }
+</style>
 
 <x-app-layout>
-
-    <!-- Navbar -->
-    <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-        <!-- Primary Navigation Menu -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex">
-
-                    <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('user.keperawatan')" :active="request()->routeIs('user.keperawatan')">
-                            {{ __('Keperawatan') }}
-                        </x-nav-link>
-                    </div>
-                </div>
-
-                <!-- Settings Dropdown -->
-                <div class="hidden sm:flex sm:items-center sm:ml-6">
-                    <x-dropdown align="right" width="48">
-                        <x-slot name="trigger">
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>{{ Auth::user()->username }}</div>
-
-                                <div class="ml-1">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </button>
-                        </x-slot>
-
-                        <x-slot name="content">
-                            <!-- Authentication -->
-                            <form method="GET" action="{{ route('logout') }}">
-                                @csrf
-
-                                <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-dropdown>
-                </div>
-
-                <!-- Hamburger -->
-                <div class="-mr-2 flex items-center sm:hidden">
-                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Responsive Navigation Menu -->
-        <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-            <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
-                    {{ __('Dashboard') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('user.keperawatan')" :active="request()->routeIs('user.keperawatan')">
-                    {{ __('Keperawatan') }}
-                </x-responsive-nav-link>
-            </div>
-
-            <!-- Responsive Settings Options -->
-            <div class="pt-4 pb-1 border-t border-gray-200">
-                <div class="px-4">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->username }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                </div>
-
-                <div class="mt-3 space-y-1">
-                    <!-- Authentication -->
-                    <form method="GET" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </x-responsive-nav-link>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Content -->
-    <div class="max-w-full flex justify-between mx-auto px-4 py-12 sm:px-10 lg:px-40">
-        @foreach ($penghuni as $pghn)
-        <!-- START: Button Kembali -->
-        <a href="{{ route('user.dashboard') }}">
-            <button class="bg-white text-gray-500 font-bold rounded border-b-2 border-gray-500 hover:border-gray-600 hover:bg-gray-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
-                <svg class="mr-2" width="24" height="30" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.02698 11.9929L5.26242 16.2426L6.67902 14.8308L4.85766 13.0033L22.9731 13.0012L22.9728 11.0012L4.85309 11.0033L6.6886 9.17398L5.27677 7.75739L1.02698 11.9929Z"
-                        fill="currentColor" />
-                </svg>
-                <span class="mr-2">Kembali</span>
-            </button>
-        </a>
-        <!-- END: Button Kembali -->
-        <!-- START: Button Cetak Data -->
-        <a href="/user/detailPenghuni/printDetailClient/{{ $pghn->id }}" target="_blank">
-            <button class="bg-white text-blue-500 font-bold rounded border-b-2 border-blue-500 hover:border-blue-600 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
-                <svg class="mr-2" width="24" height="30" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"
-                        fill="currentColor" />
-                </svg>
-                <span class="mr-2">Cetak Data</span>
-            </button>
-        </a>
-        <!-- END: Button Cetak Data -->
-    </div>
     <div class="w-full flex flex-row flex-wrap px-4 sm:px-10 lg:px-40 my-4">
+        @foreach ($penghuni as $pghn)
         <div class="mx-auto w-full">
 
             <!-- START: Profile Photo Section -->
-            <div class="rounded-lg shadow-lg bg-white w-64 border-t-4 border-green-400 justify-center flex flex-row flex-wrap p-5 antialiased mb-6">
-                <div class="object-cover h-full w-64">
-                    <img src="{{ asset('images/' . $pghn->foto) }}" alt="Foto Penghuni" class="w-96 object-cover h-64" >
+            <div class="rounded-lg shadow-lg bg-white w-28 border-t-4 border-green-400 justify-center flex flex-row flex-wrap p-5 antialiased mb-6">
+                <div class="object-cover h-full w-28">
+                    <img src="{{ asset('images/' . $pghn->foto) }}" alt="Foto Penghuni" class="w-96 object-cover h-28" >
                 </div>
             </div>
             <!-- END: Profile Photo Section -->
             <!-- START: Detail Section -->
-            <div class="rounded-lg shadow-lg bg-white w-full border-t-4 border-green-400 p-5 antialiased">
+            <div class="subpage rounded-lg shadow-lg bg-white w-full border-t-4 border-green-400 p-5 antialiased">
                 <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                     <span class="text-green-500">
                         <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -233,7 +122,7 @@
             </div>
             <!-- END: Detail Section -->
             <!-- START: Data Medic -->
-            <div class="w-full">
+            <div class="subpage w-full">
                 <div class="w-full mt-6 md:flex">
                     <!-- START: Data Berat Badan -->
                     <div class="w-full md:w-1/2">
@@ -269,7 +158,7 @@
             </div>
             <!-- END: Data Medic -->
             <!-- START: Data Medic 2 -->
-            <div class="w-full">
+            <div class="subpage w-full">
                 <div class="w-full mt-6 md:flex">
                     <!-- START: Data Suhu Badan -->
                     <div class="w-full md:w-1/2">
@@ -287,7 +176,7 @@
                     </div>
                     <!-- END: Data Suhu Badan -->
                     <!-- START: Data SpO2 -->
-                    <div class="w-full md:w-1/2 md:ml-6">
+                    <div class="subpage w-full md:w-1/2 md:ml-6">
                         <div class="rounded-lg shadow-sm mb-4">
                             <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
                                 <div class="px-5 pt-8 pb-10 relative">
@@ -305,7 +194,7 @@
             </div>
             <!-- END: Data Medic 2 -->
             <!-- START: Data Medic 3 -->
-            <div class="w-full">
+            <div class="subpage w-full">
                 <div class="w-full mt-6 md:flex">
                     <!-- START: Data Tekanan Darah -->
                     <div class="w-full md:w-1/2">
@@ -341,7 +230,7 @@
             </div>
             <!-- END: Data Medic 3 -->
             <!-- START: Data Medic 4 -->
-            <div class="w-full">
+            <div class="subpage w-full">
                 <div class="w-full mt-6 md:flex">
                     <!-- START: Data Cairan -->
                     <div class="w-full md:w-1/2">
@@ -377,7 +266,7 @@
             </div>
             <!-- END: Data Medic 4 -->
             <!-- START: Data Medic 5 -->
-            <div class="w-full">
+            <div class="subpage w-full">
                 <div class="w-full mt-6 md:flex">
                     <!-- START: Data Asam Urat -->
                     <div class="w-full md:w-1/2">
@@ -419,6 +308,9 @@
 </x-app-layout>
 
 <script>
+
+    window.addEventListener("load", window.print());
+
     // Chart Data Berat
     var areaChartCanvas = $('#chartBerat').get(0).getContext('2d')
     var areaChartData = {

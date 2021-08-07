@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePjTable extends Migration
+class CreateMobilisasidiniTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePjTable extends Migration
      */
     public function up()
     {
-        Schema::create('pj', function (Blueprint $table) {
+        Schema::create('mobilisasidini', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('alamatPJ');
-            $table->string('telpon');
-            $table->timestamps();
+            $table->integer('pegawaiid')->nullable();
+            $table->integer('penghuniid')->nullable();
+            $table->text('hasil')->nullable();
+            $table->timestamp('waktu');
         });
     }
 
@@ -29,6 +29,6 @@ class CreatePjTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pj');
+        Schema::dropIfExists('mobilisasidini');
     }
 }

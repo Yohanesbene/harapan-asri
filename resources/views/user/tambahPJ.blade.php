@@ -36,8 +36,13 @@
             <x-button class="mb-6">
                 {{ __('Next') }}
             </x-button>
+            <p class="flex flex-col items-center justify-center mt-6 text-center text-lg text-gray-500">
+                <span>Sudah Punya Penanggung Jawab?</span>
+                <a href="{{ route('user.tambahPenghuni') }}" class="font-semibold text-indigo-500 hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300">Lewati</a>
+            </p>
 
             </div>
         </form>
+        
     </x-auth-card>
 </x-guest-layout>

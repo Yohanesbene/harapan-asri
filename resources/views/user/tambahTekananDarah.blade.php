@@ -25,14 +25,14 @@
     <x-auth-card>
         <!-- Card Title -->
         <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800 mb-6">
-            Input Berat Badan
+            Input Tekanan Darah
         </h2>
 
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('user.storeBerat') }}">
+        <form method="POST" action="{{ route('user.storeTekananDarah') }}">
             @csrf
 
             <!-- Penghuni Input -->
@@ -46,9 +46,13 @@
                 </x-slot>
             </x-option-select>
 
-            <!-- Hasil Input -->
-            <x-label class="mt-4" for="hasil" :value="__('Hasil (dalam Kilogram)')" />
-            <x-input id="hasil" type="number" name="hasil" :value="old('hasil')" placeholder="Hasil" autocomplete="off" step="0.01"/>
+            <!-- Systole Input -->
+            <x-label class="mt-4" for="systole" :value="__('Systole (dalam mmhg)')" />
+            <x-input id="systole" type="text" name="systole" :value="old('systole')" placeholder="systole" autocomplete="off" />
+
+            <!-- Diastole Input -->
+            <x-label class="mt-4" for="diastole" :value="__('Diastole (dalam mmhg)')" />
+            <x-input id="diastole" type="text" name="diastole" :value="old('diastole')" placeholder="diastole" autocomplete="off" />
 
             <!-- Button Input -->
             <x-button class="mb-6">

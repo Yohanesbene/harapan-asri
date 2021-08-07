@@ -1,5 +1,5 @@
 <!-- Root element for center items -->
-<div class="flex flex-col min-h-screen bg-gray-100">
+<div class="flex flex-col min-h-screen bg-gray-100 py-10">
     <!-- Auth-card container -->
     <div class="grid place-items-center mx-2 my-20 sm:my-auto">
         <!-- Auth-card -->

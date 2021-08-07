@@ -25,14 +25,14 @@
     <x-auth-card>
         <!-- Card Title -->
         <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800 mb-6">
-            Input Berat Badan
+            Input Pemberian Obat
         </h2>
 
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('user.storeBerat') }}">
+        <form method="POST" action="{{ route('user.storePemberianObat') }}">
             @csrf
 
             <!-- Penghuni Input -->
@@ -46,9 +46,18 @@
                 </x-slot>
             </x-option-select>
 
-            <!-- Hasil Input -->
-            <x-label class="mt-4" for="hasil" :value="__('Hasil (dalam Kilogram)')" />
-            <x-input id="hasil" type="number" name="hasil" :value="old('hasil')" placeholder="Hasil" autocomplete="off" step="0.01"/>
+            <!-- Obat Input -->
+            <x-label class="mt-4" for="obat" :value="__('Nama Obat')" />
+            <x-input id="obat" type="text" name="obat" :value="old('obat')" placeholder="obat" autocomplete="off" />
+
+
+            <!-- Dosis Input -->
+            <x-label class="mt-4" for="dosis" :value="__('Dosis (dalam mg)')" />
+            <x-input id="dosis" type="number" name="dosis" :value="old('dosis')" placeholder="dosis" autocomplete="off" step="0.01"/>
+
+            <!-- Obat Input -->
+            <x-label class="mt-4" for="efek" :value="__('Efek Samping')" />
+            <x-input id="efek" type="text" name="efek" :value="old('efek')" placeholder="efek" autocomplete="off" />
 
             <!-- Button Input -->
             <x-button class="mb-6">

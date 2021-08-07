@@ -58,4 +58,11 @@ class PegawaiController extends Controller
             ->delete();
         return redirect('/admin/dataPegawai');
     }
+
+    public function printListPegawai(){
+        $pegawai = DB::table('pegawai')
+            ->select('pegawai.id', 'pegawai.nama', 'pegawai.posisi')
+            ->get();
+        return view('admin.listPegawai', compact('pegawai'));
+    }
 }
